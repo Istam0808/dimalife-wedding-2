@@ -23,7 +23,7 @@ export default function HeroTimelineBlock() {
 
   const { scrollYProgress: vineProgress } = useScroll({
     target: vineTrackRef,
-    offset: ["start 0.9", "end 0.1"],
+    offset: ["start start", "end end"],
   });
 
   const photoScale = useTransform(photoProgress, [0, 0.45, 1], [1, 1.5, 1.35]);
@@ -85,11 +85,8 @@ export default function HeroTimelineBlock() {
           </Reveal>
           <Reveal delay={160} className={styles.calendarDays}>
             {date.calendarDays.map((day) => (
-              <span
-                key={day}
-                className={day === date.highlightDay ? styles.calendarHighlight : undefined}
-              >
-                {day}
+              <span key={day} aria-hidden={day === date.highlightDay || undefined}>
+                {day === date.highlightDay ? "" : day}
               </span>
             ))}
           </Reveal>

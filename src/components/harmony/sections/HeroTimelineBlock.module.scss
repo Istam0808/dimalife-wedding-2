@@ -190,29 +190,30 @@
 
 .calendar {
   @extend %abs;
-  top: 1230px;
+  top: 1126px;
   left: 50%;
   transform: translateX(-50%);
-  width: 280px;
+  width: 320px;
   text-align: center;
+  z-index: 2;
 
   @include desktop {
-    top: 1183px;
+    top: 1377px;
     left: 664px;
     transform: none;
-    width: 151px;
+    width: 185px;
   }
 }
 
 .calendarMonth {
   @include script-text;
-  font-size: 19px;
+  font-size: 24px;
   letter-spacing: -1px;
   margin-bottom: 12px;
   transform: rotate(1deg);
 
   @include desktop {
-    font-size: 30px;
+    font-size: 38px;
   }
 }
 
@@ -220,50 +221,48 @@
 .calendarDays {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
+  gap: 8px;
 }
 
 .calendarWeekdays {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 
   span {
     @include script-text;
-    font-size: 17px;
+    font-size: 22px;
     letter-spacing: -1px;
     transform: rotate(1deg);
+
+    @include desktop {
+      font-size: 26px;
+    }
   }
 }
 
 .calendarDays span {
   @include script-text;
-  font-size: 17px;
+  font-size: 22px;
   letter-spacing: -1px;
   transform: rotate(1deg);
-}
+  min-height: 1em;
 
-.calendarHighlight {
-  background: $color-primary;
-  color: $color-white;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  min-height: 28px;
+  @include desktop {
+    font-size: 26px;
+  }
 }
 
 .vineTrack {
   @extend %abs;
-  top: 1201px;
-  left: 119px;
+  top: 1210px;
+  left: 100px;
   width: 195px;
   aspect-ratio: 195 / 684;
-  z-index: 3;
+  z-index: 5;
   pointer-events: none;
 
   @include desktop {
-    top: 1463px;
-    left: 461px;
+    top: 1475px;
+    left: 443px;
     width: 279px;
   }
 }
