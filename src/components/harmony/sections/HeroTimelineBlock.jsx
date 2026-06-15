@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, Fragment } from "react";
 import { invite } from "@/data/invite";
 import { useVinePathMotion } from "@/hooks/useVinePathMotion";
 import CoupleTitle from "../ui/CoupleTitle";
@@ -71,7 +71,25 @@ export default function HeroTimelineBlock() {
         </Reveal>
 
         <Reveal className={styles.intro}>
-          <p>{hero.greetingIntro}</p>
+          <p>
+            {hero.greetingIntro.map((line, index) => {
+              if (line === null) {
+                return (
+                  <Fragment key={index}>
+                    <br />
+                    <br />
+                  </Fragment>
+                );
+              }
+
+              return (
+                <Fragment key={index}>
+                  {index > 0 && hero.greetingIntro[index - 1] !== null && <br />}
+                  {line}
+                </Fragment>
+              );
+            })}
+          </p>
         </Reveal>
 
         <Reveal className={styles.signature}>{couple.signature}</Reveal>

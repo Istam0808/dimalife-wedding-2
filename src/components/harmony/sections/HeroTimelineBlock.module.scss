@@ -4,6 +4,8 @@
 .block {
   position: relative;
   padding: 0 0 24px;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .artboard {
@@ -12,6 +14,11 @@
   min-height: 2035px;
   margin: 0 auto;
   padding: 0 40px;
+  overflow-x: clip;
+
+  @include mobile {
+    padding: 0 14px;
+  }
 
   @include desktop {
     width: $artboard-width;
@@ -115,7 +122,8 @@
   top: 679px;
   left: 50%;
   transform: translateX(-50%);
-  width: 392px;
+  width: min(392px, 100%);
+  max-width: 100%;
   pointer-events: none;
 
   img {
@@ -134,7 +142,13 @@
   @extend %abs;
   top: 769px;
   left: 55px;
-  width: 220px;
+  width: min(220px, calc(100% - 28px));
+
+  @include mobile {
+    left: 0;
+    width: 100%;
+    padding-inline: 16px;
+  }
 
   @include desktop {
     top: 841px;
@@ -147,15 +161,22 @@
   @extend %abs;
   top: 929px;
   left: 54px;
-  width: 311px;
+  width: min(311px, calc(100% - 28px));
+
+  @include mobile {
+    left: 0;
+    width: 100%;
+    padding-inline: 16px;
+  }
 
   p {
-    font-family: $font-montserrat-black;
-    font-weight: 900;
+    font-family: $font-body;
+    font-weight: 300;
     color: $color-primary;
     font-size: 14px;
-    line-height: 1.2;
-    letter-spacing: -0.8px;
+    line-height: 17px;
+    letter-spacing: -0.3px;
+    margin: 0;
   }
 
   @include desktop {
@@ -166,6 +187,7 @@
     p {
       font-size: 21px;
       line-height: 1.3;
+      letter-spacing: -0.8px;
     }
   }
 }
@@ -174,11 +196,17 @@
   @extend %abs;
   top: 1057px;
   right: 45px;
-  width: 199px;
+  width: min(199px, calc(100% - 28px));
   @include script-text;
   font-size: 19px;
   text-align: right;
   color: $color-accent;
+
+  @include mobile {
+    right: 0;
+    width: min(199px, 55%);
+    padding-inline: 16px;
+  }
 
   @include desktop {
     top: 1242px;
@@ -193,7 +221,7 @@
   top: 1126px;
   left: 50%;
   transform: translateX(-50%);
-  width: 320px;
+  width: min(320px, 100%);
   text-align: center;
   z-index: 2;
 

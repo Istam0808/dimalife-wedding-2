@@ -4,6 +4,13 @@
   opacity: 0;
   transition: opacity 1.2s $ease-smooth;
   min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  touch-action: pan-y;
+  overscroll-behavior-x: none;
 }
 
 .visible {

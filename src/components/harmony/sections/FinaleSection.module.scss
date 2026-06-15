@@ -5,6 +5,8 @@
   padding: 32px 16px 0;
   position: relative;
   overflow: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .artboard {

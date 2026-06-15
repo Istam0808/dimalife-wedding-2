@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import BackgroundMusic from "./BackgroundMusic";
 import BackgroundCover from "./BackgroundCover";
 import HeroTimelineBlock from "./sections/HeroTimelineBlock";
 import VenueSection from "./sections/VenueSection";
@@ -19,6 +20,7 @@ export default function HarmonyInvite() {
   return (
     <main className={`${styles.invite} ${visible ? styles.visible : ""}`}>
       <BackgroundCover />
+      <BackgroundMusic />
       <HeroTimelineBlock />
       <VenueSection />
       <WishesSection />

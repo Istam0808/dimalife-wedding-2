@@ -1,0 +1,99 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.dock {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  padding: 0 max(16px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) 0;
+  pointer-events: none;
+
+  @include desktop {
+    padding: 0 max(24px, env(safe-area-inset-right, 0px)) max(24px, env(safe-area-inset-bottom, 0px)) 0;
+  }
+}
+
+.toggleButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border: 1px solid rgba($color-primary, 0.2);
+  border-radius: 50%;
+  background: rgba($color-white, 0.94);
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+
+  &:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+    background: $color-white;
+  }
+
+  @include desktop {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.equalizer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: 20px;
+}
+
+.bar {
+  width: 3px;
+  height: 16px;
+  border-radius: 2px;
+  background: $color-primary;
+  transform-origin: center bottom;
+  animation: soundBar 0.75s ease-in-out infinite;
+
+  &:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  &:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: 0.24s;
+  }
+
+  &:nth-child(4) {
+    animation-delay: 0.36s;
+  }
+}
+
+.playIcon {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 13px solid $color-primary;
+}
+
+@keyframes soundBar {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}

@@ -4,6 +4,8 @@
 .venue {
   padding: 48px 16px 64px;
   position: relative;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 .artboard {
@@ -42,7 +44,7 @@
 
   @include mobile {
     width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
   }
 }
 
