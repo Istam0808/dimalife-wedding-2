@@ -3,156 +3,97 @@
 import { useState } from "react";
 import { invite } from "@/data/invite";
 import Reveal from "../ui/Reveal";
+import SplitSectionTitle from "../ui/SplitSectionTitle";
 import styles from "./RsvpSection.module.scss";
 
-const initialForm = {
-  attendance: "",
-  name: "",
-  drinks: [],
-  allergy: "",
-};
-
 export default function RsvpSection() {
-  const [form, setForm] = useState(initialForm);
-  const [errors, setErrors] = useState({});
+  const { rsvp } = invite;
+  const [drinks, setDrinks] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  const validate = () => {
-    const next = {};
+  function toggleDrink(drink) {
+    setDrinks((prev) =>
+      prev.includes(drink) ? prev.filter((item) => item !== drink) : [...prev, drink],
+    );
+  }
 
-    if (!form.attendance) {
-      next.attendance = "Пожалуйста, укажите, сможете ли вы присутствовать";
-    }
-
-    if (!form.name.trim()) {
-      next.name = "Введите имя и фамилию";
-    }
-
-    setErrors(next);
-    return Object.keys(next).length === 0;
-  };
-
-  const handleSubmit = (event) => {
+  function handleSubmit(event) {
     event.preventDefault();
-    if (!validate()) return;
     setSubmitted(true);
-  };
-
-  const toggleDrink = (drink) => {
-    setForm((prev) => ({
-      ...prev,
-      drinks: prev.drinks.includes(drink)
-        ? prev.drinks.filter((item) => item !== drink)
-        : [...prev.drinks, drink],
-    }));
-  };
+  }
 
   return (
     <section className={styles.rsvp} aria-label="Анкета гостя">
+      <div className={styles.frame} aria-hidden />
       <div className={styles.artboard}>
-        <Reveal className={styles.header}>
-          <h2 className={styles.title}>С заботой о вас</h2>
-          <p className={styles.subtitle}>
-            Пожалуйста, заполните анкету до {invite.rsvp.deadline}
-          </p>
+        <Reveal className={styles.title}>
+          <span className={styles.titleLetter}>{rsvp.titleLetter}</span>
+          <span className={styles.titleWord}>{rsvp.titleWord}</span>
+          <p className={styles.titleRest}>{rsvp.titleRest}</p>
         </Reveal>
 
-        <Reveal delay={100} variant="zoomin">
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
-            <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Сможете ли вы присутствовать?</legend>
-              <label className={styles.radio}>
-                <input
-                  type="radio"
-                  name="attendance"
-                  value="yes"
-                  checked={form.attendance === "yes"}
-                  onChange={(e) =>
-                    setForm((prev) => ({ ...prev, attendance: e.target.value }))
-                  }
-                />
-                <span>Буду с радостью!</span>
-              </label>
-              <label className={styles.radio}>
-                <input
-                  type="radio"
-                  name="attendance"
-                  value="no"
-                  checked={form.attendance === "no"}
-                  onChange={(e) =>
-                    setForm((prev) => ({ ...prev, attendance: e.target.value }))
-                  }
-                />
-                <span>К сожалению, не смогу</span>
-              </label>
-              {errors.attendance ? (
-                <p className={styles.error} role="alert">
-                  {errors.attendance}
-                </p>
-              ) : null}
-            </fieldset>
+        <Reveal delay={80} className={styles.prompt}>
+          <span className={styles.promptLetter}>{rsvp.promptLetter}</span>
+          <span className={styles.promptRest}>{rsvp.promptRest}</span>
+          <p className={styles.promptAction}>{rsvp.promptAction}</p>
+        </Reveal>
 
-            <div className={styles.field}>
+        <Reveal delay={120} className={styles.intro}>
+          <p>{rsvp.intro}</p>
+        </Reveal>
+
+        {submitted ? (
+          <Reveal className={styles.success}>Спасибо! Мы получили ваш ответ.</Reveal>
+        ) : (
+          <Reveal delay={160} className={styles.formWrap}>
+            <form className={styles.form} onSubmit={handleSubmit}>
               <label className={styles.label} htmlFor="rsvp-name">
-                Имя и фамилия
+                Ваше имя и фамилия
               </label>
               <input
                 id="rsvp-name"
+                name="name"
                 type="text"
                 className={styles.input}
-                value={form.name}
-                onChange={(e) => setForm((prev) => ({ ...prev, name: e.target.value }))}
-                autoComplete="name"
+                required
               />
-              {errors.name ? (
-                <p className={styles.error} role="alert">
-                  {errors.name}
-                </p>
-              ) : null}
-            </div>
 
-            <fieldset className={styles.fieldset}>
-              <legend className={styles.legend}>Предпочтения по напиткам</legend>
-              <div className={styles.checkboxes}>
-                {invite.rsvp.drinks.map((drink) => (
-                  <label key={drink} className={styles.checkbox}>
+              <fieldset className={styles.fieldset}>
+                <legend className={styles.legend}>Предпочитаемые напитки</legend>
+                {rsvp.drinks.map((drink) => (
+                  <label key={drink} className={styles.check}>
                     <input
                       type="checkbox"
-                      checked={form.drinks.includes(drink)}
+                      checked={drinks.includes(drink)}
                       onChange={() => toggleDrink(drink)}
                     />
                     <span>{drink}</span>
                   </label>
                 ))}
-              </div>
-            </fieldset>
+              </fieldset>
 
-            <div className={styles.field}>
               <label className={styles.label} htmlFor="rsvp-allergy">
-                Аллергия или особые пожелания
+                Аллергии и особые пожелания
               </label>
-              <input
-                id="rsvp-allergy"
-                type="text"
-                className={styles.input}
-                value={form.allergy}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, allergy: e.target.value }))
-                }
-              />
-            </div>
+              <textarea id="rsvp-allergy" name="allergy" className={styles.textarea} rows={3} />
 
-            <button type="submit" className={styles.submit}>
-              Отправить
-            </button>
+              <button type="submit" className={styles.submit}>
+                Отправить
+              </button>
+            </form>
+          </Reveal>
+        )}
 
-            {submitted ? (
-              <p className={styles.success} role="status">
-                Спасибо! Ваш ответ сохранён локально. Отправка на сервер будет
-                добавлена позже.
-              </p>
-            ) : null}
-          </form>
+        <Reveal delay={200} className={styles.organizer}>
+          <p>{rsvp.organizerIntro}</p>
+          <a
+            href={rsvp.organizerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.organizerButton}
+          >
+            {rsvp.organizerButton}
+          </a>
         </Reveal>
       </div>
     </section>

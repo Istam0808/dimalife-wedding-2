@@ -2,13 +2,9 @@
 
 import { useEffect, useState } from "react";
 import BackgroundCover from "./BackgroundCover";
-import HeroSection from "./sections/HeroSection";
-import TimelineSection from "./sections/TimelineSection";
-import CalendarStrip from "./sections/CalendarStrip";
+import HeroTimelineBlock from "./sections/HeroTimelineBlock";
 import VenueSection from "./sections/VenueSection";
-import DressCodeSection from "./sections/DressCodeSection";
 import WishesSection from "./sections/WishesSection";
-import RsvpSection from "./sections/RsvpSection";
 import FinaleSection from "./sections/FinaleSection";
 import styles from "./HarmonyInvite.module.scss";
 
@@ -23,13 +19,9 @@ export default function HarmonyInvite() {
   return (
     <main className={`${styles.invite} ${visible ? styles.visible : ""}`}>
       <BackgroundCover />
-      <HeroSection />
-      <TimelineSection />
-      <CalendarStrip />
+      <HeroTimelineBlock />
       <VenueSection />
-      <DressCodeSection />
       <WishesSection />
-      <RsvpSection />
       <FinaleSection />
     </main>
   );

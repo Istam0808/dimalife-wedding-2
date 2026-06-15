@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { invite } from "@/data/invite";
+import ProgramTitle from "../ui/ProgramTitle";
 import Reveal from "../ui/Reveal";
 import styles from "./TimelineSection.module.scss";
 
@@ -20,13 +21,8 @@ export default function TimelineSection() {
   return (
     <section className={styles.timeline} ref={sectionRef} aria-label="Программа дня">
       <div className={styles.artboard}>
-        <Reveal className={styles.titleImg}>
-          <Image
-            src="/harmony/timeline-title.svg"
-            alt="Программа дня"
-            width={400}
-            height={80}
-          />
+        <Reveal className={styles.title}>
+          <ProgramTitle />
         </Reveal>
 
         <motion.div

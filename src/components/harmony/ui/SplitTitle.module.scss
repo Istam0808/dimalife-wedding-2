@@ -30,3 +30,33 @@
   font-size: clamp(28px, 7vw, 42px);
   margin-top: 8px;
 }
+
+.tilda {
+  text-align: left;
+}
+
+.tildaRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.tildaLetter {
+  @include split-letter;
+  font-size: clamp(50px, 12.5vw, 72px);
+  line-height: 1;
+}
+
+.tildaRest {
+  @include script-text;
+  font-size: clamp(50px, 12.5vw, 64px);
+  line-height: 0.95;
+  margin-left: -2px;
+}
+
+.tildaSub {
+  @include script-text;
+  font-size: clamp(50px, 12.5vw, 64px);
+  line-height: 0.9;
+  margin-top: 4px;
+}

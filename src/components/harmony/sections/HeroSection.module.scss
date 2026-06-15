@@ -18,14 +18,9 @@
   text-align: center;
 }
 
-.logoWrap {
-  margin-bottom: 24px;
-}
-
-.logo {
-  width: min(280px, 75vw);
-  height: auto;
-  margin: 0 auto;
+.titleWrap {
+  margin-bottom: 28px;
+  width: 100%;
 }
 
 .date {
@@ -33,12 +28,6 @@
   font-size: clamp(32px, 8vw, 48px);
   letter-spacing: 2px;
   margin-bottom: 12px;
-}
-
-.names {
-  @include script-text;
-  font-size: clamp(28px, 6vw, 40px);
-  margin-bottom: 32px;
 }
 
 .intro {

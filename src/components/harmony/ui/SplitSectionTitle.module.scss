@@ -1,0 +1,48 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.wrap {
+  text-align: left;
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.letter {
+  @include split-letter;
+  font-size: clamp(48px, 12vw, 72px);
+  line-height: 1;
+}
+
+.rest {
+  @include script-text;
+  font-size: clamp(40px, 10vw, 64px);
+  line-height: 0.95;
+  margin-left: -2px;
+}
+
+.sub {
+  @include script-text;
+  font-size: clamp(40px, 10vw, 64px);
+  line-height: 0.9;
+  margin: 4px 0 0;
+}
+
+.center {
+  text-align: center;
+
+  .row {
+    justify-content: center;
+  }
+}
+
+.right {
+  text-align: right;
+
+  .row {
+    justify-content: flex-end;
+  }
+}

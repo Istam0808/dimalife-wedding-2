@@ -1,16 +1,17 @@
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Marck_Script, Caveat } from "next/font/google";
 import "./globals.scss";
 
-const cormorant = Cormorant_Garamond({
+const marckScript = Marck_Script({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600"],
-  variable: "--font-cormorant",
+  weight: ["400"],
+  variable: "--font-marck-script",
   display: "swap",
 });
 
-const inter = Inter({
+const caveat = Caveat({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-geist-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -21,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru" className={`${cormorant.variable} ${inter.variable}`}>
+    <html lang="ru" className={`${marckScript.variable} ${caveat.variable}`}>
       <body>{children}</body>
     </html>
   );

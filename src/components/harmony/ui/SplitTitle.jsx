@@ -1,13 +1,29 @@
 import styles from "./SplitTitle.module.scss";
 
-export default function SplitTitle({ letter = "Д", rest = "орогие", subtitle }) {
+export default function SplitTitle({ variant = "default" }) {
+  if (variant === "tilda") {
+    return (
+      <div className={styles.tilda}>
+        <div className={styles.tildaRow}>
+          <span className={styles.tildaLetter}>Д</span>
+          <span className={styles.tildaRest}>орогие</span>
+        </div>
+        <p className={styles.tildaSub}>
+          родные
+          <br />
+          и близкие!
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>
-        <span className={styles.letter}>{letter}</span>
-        <span className={styles.rest}>{rest}</span>
+        <span className={styles.letter}>Д</span>
+        <span className={styles.rest}>орогие</span>
       </h2>
-      {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
+      <p className={styles.subtitle}>родные и близкие!</p>
     </div>
   );
 }

@@ -21,7 +21,7 @@
 
 @mixin split-letter {
   font-family: $font-body;
-  font-weight: 800;
+  font-weight: 700;
   color: $color-primary;
   line-height: 1.2;
 }
@@ -30,7 +30,7 @@
   font-family: $font-display;
   font-weight: 400;
   color: $color-primary;
-  letter-spacing: -0.8px;
+  letter-spacing: 0;
 }
 
 @mixin button-primary {
@@ -43,7 +43,7 @@
   color: $color-white;
   font-family: $font-body;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   text-decoration: none;
   border: none;
   cursor: pointer;

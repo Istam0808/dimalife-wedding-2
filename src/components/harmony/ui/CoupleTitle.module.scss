@@ -1,0 +1,35 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.title {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.12em 0.2em;
+  margin: 0;
+  text-align: center;
+}
+
+.group {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.letter {
+  @include split-letter;
+  font-size: clamp(56px, 14vw, 88px);
+  line-height: 1;
+}
+
+.rest {
+  @include script-text;
+  font-size: clamp(30px, 7.5vw, 50px);
+  margin-left: -2px;
+}
+
+.amp {
+  @include script-text;
+  font-size: clamp(28px, 7vw, 44px);
+  align-self: center;
+}

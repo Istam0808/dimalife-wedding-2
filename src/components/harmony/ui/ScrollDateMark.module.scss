@@ -1,0 +1,18 @@
+@use "../../../styles/variables" as *;
+
+.mark {
+  display: block;
+  width: 53px;
+  height: 48px;
+}
+
+.shape {
+  fill: $color-primary;
+}
+
+.label {
+  font-family: $font-display;
+  font-size: 15px;
+  font-weight: 400;
+  fill: $color-white;
+}

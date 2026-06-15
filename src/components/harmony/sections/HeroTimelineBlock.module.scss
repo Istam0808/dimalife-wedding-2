@@ -1,0 +1,453 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.block {
+  position: relative;
+  padding: 0 0 24px;
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(400px, calc(100% - 30px));
+  height: 100%;
+  border: 6px solid $color-primary;
+  pointer-events: none;
+  z-index: 1;
+
+  @include desktop {
+    width: min($artboard-width, calc(100% - 48px));
+  }
+}
+
+.artboard {
+  position: relative;
+  width: min(400px, 100%);
+  min-height: 2035px;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @include desktop {
+    width: $artboard-width;
+    min-height: 2690px;
+    padding: 0;
+  }
+}
+
+%abs {
+  position: absolute;
+  z-index: 2;
+}
+
+.inviteLabel {
+  @extend %abs;
+  top: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  @include split-letter;
+  font-size: 14px;
+  letter-spacing: -0.8px;
+  text-align: center;
+  white-space: nowrap;
+
+  @include desktop {
+    top: 50px;
+    font-size: 21px;
+  }
+}
+
+.coupleTitle {
+  @extend %abs;
+  top: 72px;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  @include desktop {
+    top: 100px;
+  }
+}
+
+.photoZone {
+  @extend %abs;
+  top: 245px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 262px;
+  z-index: 3;
+
+  @include desktop {
+    top: 288px;
+    width: 323px;
+  }
+}
+
+.photoWrap {
+  width: 100%;
+  transform-origin: center top;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.weddingLabel {
+  @extend %abs;
+  top: 461px;
+  left: 50%;
+  transform: translateX(-50%);
+  @include split-letter;
+  font-size: 15px;
+  text-align: center;
+
+  @include desktop {
+    top: 546px;
+    font-size: 21px;
+  }
+}
+
+.dateLine {
+  @extend %abs;
+  top: 532px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+  width: 60px;
+  height: 1px;
+  background: $color-primary;
+
+  @include desktop {
+    top: 645px;
+    width: 100px;
+  }
+}
+
+.dateValue {
+  @extend %abs;
+  top: 585px;
+  left: 50%;
+  transform: translateX(-50%);
+  @include script-text;
+  font-size: 35px;
+  letter-spacing: -2px;
+  text-align: center;
+
+  @include desktop {
+    top: 718px;
+    font-size: 47px;
+  }
+}
+
+.dateUnderline {
+  @extend %abs;
+  top: 679px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 392px;
+  pointer-events: none;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @include desktop {
+    top: 812px;
+    width: 399px;
+  }
+}
+
+.greeting {
+  @extend %abs;
+  top: 769px;
+  left: 55px;
+  width: 220px;
+
+  @include desktop {
+    top: 841px;
+    left: 280px;
+    width: 280px;
+  }
+}
+
+.intro {
+  @extend %abs;
+  top: 929px;
+  left: 54px;
+  width: 311px;
+
+  p {
+    @include split-letter;
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+  }
+
+  @include desktop {
+    top: 1062px;
+    left: 279px;
+    width: 468px;
+
+    p {
+      font-size: 21px;
+      line-height: 1.3;
+    }
+  }
+}
+
+.signature {
+  @extend %abs;
+  top: 1057px;
+  right: 45px;
+  width: 199px;
+  @include script-text;
+  font-size: 19px;
+  text-align: right;
+  color: $color-accent;
+
+  @include desktop {
+    top: 1242px;
+    right: 38px;
+    width: 382px;
+    font-size: 29px;
+  }
+}
+
+.programTitle {
+  @extend %abs;
+  top: 1107px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 264px;
+
+  @include desktop {
+    top: 1324px;
+    width: 419px;
+  }
+}
+
+.calendar {
+  @extend %abs;
+  top: 1230px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  text-align: center;
+
+  @include desktop {
+    top: 1183px;
+    left: 664px;
+    transform: none;
+    width: 151px;
+  }
+}
+
+.calendarMonth {
+  @include script-text;
+  font-size: 19px;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  transform: rotate(1deg);
+
+  @include desktop {
+    font-size: 30px;
+  }
+}
+
+.calendarWeekdays,
+.calendarDays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.calendarWeekdays {
+  margin-bottom: 8px;
+
+  span {
+    @include script-text;
+    font-size: 17px;
+    letter-spacing: -1px;
+    transform: rotate(1deg);
+  }
+}
+
+.calendarDays span {
+  @include script-text;
+  font-size: 17px;
+  letter-spacing: -1px;
+  transform: rotate(1deg);
+}
+
+.calendarHighlight {
+  background: $color-primary;
+  color: $color-white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.vine {
+  @extend %abs;
+  top: 1201px;
+  left: 119px;
+  width: 195px;
+  height: auto;
+  pointer-events: none;
+
+  @include desktop {
+    top: 1463px;
+    left: 461px;
+    width: 279px;
+  }
+}
+
+.scrollButterfly {
+  @extend %abs;
+  top: 1276px;
+  left: 174px;
+  width: 53px;
+  z-index: 4;
+  pointer-events: none;
+
+  @include desktop {
+    top: 1240px;
+    left: 714px;
+  }
+}
+
+.event {
+  @extend %abs;
+  width: 134px;
+}
+
+.eventTime {
+  display: block;
+  @include script-text;
+  font-size: 36px;
+  letter-spacing: -2px;
+  line-height: 1;
+  transform: rotate(1deg);
+  margin-bottom: 6px;
+
+  @include desktop {
+    font-size: 50px;
+  }
+}
+
+.eventTitle {
+  display: block;
+  @include script-text;
+  font-size: 17px;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+
+  @include desktop {
+    font-size: 24px;
+  }
+}
+
+.eventDesc {
+  @include split-letter;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+
+  @include desktop {
+    font-size: 21px;
+  }
+}
+
+.event_left {
+  text-align: left;
+}
+
+.event_right {
+  text-align: left;
+}
+
+.event_center {
+  text-align: left;
+}
+
+.event[data-index="0"] {
+  top: 1286px;
+  left: 55px;
+
+  @include desktop {
+    top: 1608px;
+    left: 253px;
+  }
+}
+
+.event[data-index="1"] {
+  top: 1414px;
+  left: 250px;
+  width: 96px;
+
+  @include desktop {
+    top: 1796px;
+    left: 680px;
+    width: 138px;
+  }
+}
+
+.event[data-index="2"] {
+  top: 1613px;
+  left: 51px;
+
+  @include desktop {
+    top: 2066px;
+    left: 253px;
+    width: 244px;
+  }
+}
+
+.event[data-index="3"] {
+  top: 1814px;
+  left: 145px;
+  width: 134px;
+
+  @include desktop {
+    top: 2411px;
+    left: 490px;
+    width: 227px;
+  }
+}
+
+.heart {
+  @extend %abs;
+  top: 1960px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  animation: pulse 3s ease-in-out infinite;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  @include desktop {
+    top: 2580px;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+
+  50% {
+    transform: translateX(-50%) scale(1.06);
+  }
+}

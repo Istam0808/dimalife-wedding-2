@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { invite } from "@/data/invite";
+import CoupleTitle from "../ui/CoupleTitle";
 import Reveal from "../ui/Reveal";
 import SplitTitle from "../ui/SplitTitle";
 import styles from "./HeroSection.module.scss";
@@ -20,26 +21,15 @@ export default function HeroSection() {
   return (
     <section className={styles.hero} aria-label="Приветствие">
       <div className={styles.artboard}>
-        <Reveal className={styles.logoWrap}>
-          <Image
-            src="/harmony/logo.svg"
-            alt="Дильмурод и Шакира"
-            width={280}
-            height={120}
-            className={styles.logo}
-            priority
-          />
+        <Reveal className={styles.titleWrap}>
+          <CoupleTitle />
         </Reveal>
 
         <Reveal delay={100} className={styles.date}>
           {invite.date.display}
         </Reveal>
 
-        <Reveal delay={200} className={styles.names}>
-          {invite.couple.full}
-        </Reveal>
-
-        <Reveal delay={300}>
+        <Reveal delay={200}>
           <SplitTitle subtitle="родные и близкие!" />
         </Reveal>
 
