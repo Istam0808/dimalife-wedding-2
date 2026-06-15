@@ -1,0 +1,58 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.venue {
+  padding: 48px 16px 64px;
+  position: relative;
+}
+
+.artboard {
+  @include artboard;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  @include script-text;
+  font-size: clamp(32px, 8vw, 48px);
+  margin-bottom: 16px;
+}
+
+.name {
+  @include split-letter;
+  font-size: clamp(20px, 5vw, 28px);
+  letter-spacing: 2px;
+  margin-bottom: 32px;
+}
+
+.mapWrap {
+  margin-bottom: 32px;
+}
+
+.map {
+  width: min(800px, 92vw);
+  height: auto;
+  margin: 0 auto;
+}
+
+.actions {
+  margin-top: 8px;
+}
+
+.button {
+  @include button-primary;
+}
+
+.vine {
+  position: absolute;
+  left: -2%;
+  bottom: 0;
+  width: min(100px, 20vw);
+  height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+
+  @include mobile {
+    display: none;
+  }
+}

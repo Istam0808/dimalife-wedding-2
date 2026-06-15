@@ -1,0 +1,50 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.calendar {
+  padding: 16px 16px 48px;
+}
+
+.artboard {
+  @include artboard;
+  text-align: center;
+}
+
+.month {
+  @include split-letter;
+  font-size: clamp(22px, 5vw, 28px);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.weekdays,
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.weekdays {
+  margin-bottom: 12px;
+
+  span {
+    @include split-letter;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+}
+
+.days span {
+  @include script-text;
+  font-size: clamp(18px, 4.5vw, 24px);
+  padding: 8px 4px;
+  border-radius: 50%;
+}
+
+.highlight {
+  background-color: $color-primary;
+  color: $color-white !important;
+  font-weight: 600;
+}

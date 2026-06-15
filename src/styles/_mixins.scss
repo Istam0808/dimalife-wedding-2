@@ -1,0 +1,55 @@
+@use "variables" as *;
+
+@mixin artboard {
+  position: relative;
+  width: 100%;
+  max-width: $artboard-width;
+  margin: 0 auto;
+}
+
+@mixin mobile {
+  @media screen and (max-width: $breakpoint-desktop - 1) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin split-letter {
+  font-family: $font-body;
+  font-weight: 800;
+  color: $color-primary;
+  line-height: 1.2;
+}
+
+@mixin script-text {
+  font-family: $font-display;
+  font-weight: 400;
+  color: $color-primary;
+  letter-spacing: -0.8px;
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  min-height: 48px;
+  background-color: $color-button;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: 14px;
+  font-weight: 900;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-button-hover;
+  }
+}

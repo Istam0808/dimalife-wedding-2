@@ -1,0 +1,112 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.timeline {
+  padding: 24px 16px 48px;
+
+  @include desktop {
+    padding: 32px 0 64px;
+  }
+}
+
+.artboard {
+  @include artboard;
+  position: relative;
+}
+
+.titleImg {
+  text-align: center;
+  margin-bottom: 40px;
+
+  img {
+    margin: 0 auto;
+    width: min(400px, 85vw);
+    height: auto;
+  }
+}
+
+.butterfly {
+  position: absolute;
+  top: 80px;
+  right: 8%;
+  z-index: 2;
+  width: 48px;
+  pointer-events: none;
+
+  @include mobile {
+    right: 4%;
+    top: 60px;
+    width: 36px;
+  }
+}
+
+.events {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: start;
+  text-align: left;
+
+  @include mobile {
+    grid-template-columns: 56px 1fr;
+    gap: 12px;
+  }
+}
+
+.time {
+  @include split-letter;
+  font-size: 20px;
+  padding-top: 4px;
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.eventTitle {
+  @include split-letter;
+  font-size: 18px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.eventText {
+  @include script-text;
+  font-size: clamp(16px, 4vw, 20px);
+  line-height: 1.45;
+}
+
+.heart {
+  margin-top: 48px;
+  text-align: center;
+  animation: pulse 3s ease-in-out infinite;
+
+  img {
+    margin: 0 auto;
+    width: min(100px, 28vw);
+    height: auto;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 0.85;
+  }
+}

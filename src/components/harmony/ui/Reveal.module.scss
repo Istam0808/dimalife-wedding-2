@@ -1,0 +1,22 @@
+@use "../../../styles/variables" as *;
+
+.reveal {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: $reveal-duration;
+  transition-timing-function: $ease-smooth;
+  will-change: opacity, transform;
+}
+
+.fadein {
+  transform: translateY(24px);
+}
+
+.zoomin {
+  transform: scale(0.92);
+}
+
+.visible {
+  opacity: 1;
+  transform: none;
+}

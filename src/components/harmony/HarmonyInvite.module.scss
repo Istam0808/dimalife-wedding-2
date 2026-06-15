@@ -1,0 +1,11 @@
+@use "../../styles/variables" as *;
+
+.invite {
+  opacity: 0;
+  transition: opacity 1.2s $ease-smooth;
+  min-height: 100vh;
+}
+
+.visible {
+  opacity: 1;
+}

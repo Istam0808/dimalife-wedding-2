@@ -1,0 +1,19 @@
+$color-primary: #8b1111;
+$color-accent: #973837;
+$color-button: #760f0f;
+$color-button-hover: #600b0b;
+$color-bg: #dbdbdb;
+$color-rsvp-bg: #760e0e;
+$color-rsvp-text: #fffdfa;
+$color-white: #ffffff;
+
+$font-display: var(--font-cormorant), "Times New Roman", serif;
+$font-body: var(--font-geist-sans), system-ui, sans-serif;
+
+$artboard-width: 1200px;
+$mobile-width: 320px;
+$breakpoint-desktop: 1200px;
+
+$ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+$reveal-duration: 1s;
+$reveal-duration-slow: 6s;

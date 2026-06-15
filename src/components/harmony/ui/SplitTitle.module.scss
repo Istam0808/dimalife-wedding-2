@@ -1,0 +1,32 @@
+@use "../../../styles/variables" as *;
+@use "../../../styles/mixins" as *;
+
+.wrap {
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+}
+
+.letter {
+  @include split-letter;
+  font-size: clamp(48px, 12vw, 72px);
+}
+
+.rest {
+  @include script-text;
+  font-size: clamp(40px, 10vw, 64px);
+  margin-left: -4px;
+}
+
+.subtitle {
+  @include script-text;
+  font-size: clamp(28px, 7vw, 42px);
+  margin-top: 8px;
+}
