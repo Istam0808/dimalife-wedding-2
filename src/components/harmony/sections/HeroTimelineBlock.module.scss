@@ -6,22 +6,6 @@
   padding: 0 0 24px;
 }
 
-.frame {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(400px, calc(100% - 30px));
-  height: 100%;
-  border: 6px solid $color-primary;
-  pointer-events: none;
-  z-index: 1;
-
-  @include desktop {
-    width: min($artboard-width, calc(100% - 48px));
-  }
-}
-
 .artboard {
   position: relative;
   width: min(400px, 100%);

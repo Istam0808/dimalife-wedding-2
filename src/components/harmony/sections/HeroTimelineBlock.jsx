@@ -34,7 +34,6 @@ export default function HeroTimelineBlock() {
 
   return (
     <section className={styles.block} aria-label="Приглашение и программа дня">
-      <div className={styles.frame} aria-hidden />
       <div className={styles.artboard} ref={boardRef}>
         <Reveal className={styles.heroHead}>
           <CoupleTitle />

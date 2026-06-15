@@ -20,53 +20,9 @@
   }
 }
 
-.initialsBlock {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.initial {
-  font-family: $font-display;
-  font-size: clamp(72px, 22vw, 96px);
-  font-weight: 600;
-  color: $color-primary;
-  line-height: 0.9;
-}
-
-.initialAmp {
-  font-family: $font-display;
-  font-size: clamp(32px, 9vw, 40px);
-  font-style: italic;
-  font-weight: 400;
-  color: $color-primary;
-  margin: 0 8px;
-  padding-top: clamp(12px, 4vw, 20px);
-}
-
-.namesRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.nameLabel {
-  font-family: $font-display;
-  font-size: clamp(11px, 3vw, 13px);
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: $color-primary;
-}
-
-.nameAmp {
-  font-family: $font-display;
-  font-size: clamp(11px, 3vw, 13px);
-  font-style: italic;
-  font-weight: 400;
-  color: $color-accent;
+.initialsImage {
+  display: block;
+  width: min(100%, 420px);
+  height: auto;
+  margin: 0 auto;
 }
