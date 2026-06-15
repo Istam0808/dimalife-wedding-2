@@ -15,10 +15,10 @@ export default function VenueSection() {
 
         <Reveal delay={200} variant="zoomin" className={styles.mapWrap}>
           <Image
-            src="/harmony/XXXL.webp"
-            alt={`Карта — ${invite.venue.name}`}
-            width={800}
-            height={500}
+            src="/harmony/restaurant.png"
+            alt={invite.venue.name}
+            width={1719}
+            height={915}
             className={styles.map}
           />
         </Reveal>
@@ -33,15 +33,6 @@ export default function VenueSection() {
             {invite.venue.mapButton}
           </a>
         </Reveal>
-
-        <Image
-          src="/harmony/vine.svg"
-          alt=""
-          width={120}
-          height={200}
-          className={styles.vine}
-          aria-hidden
-        />
       </div>
     </section>
   );

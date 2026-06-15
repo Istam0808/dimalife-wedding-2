@@ -17,8 +17,8 @@ export const invite = {
     ceremonyTime: "19:00",
     monthLabel: "ИЮНЬ 2026",
     highlightDay: 26,
-    weekdayLabels: ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"],
-    calendarDays: [23, 24, 25, 26, 27, 28, 29],
+    weekdayLabels: ["СР", "ЧТ", "ПТ", "СБ", "ВС"],
+    calendarDays: [24, 25, 26, 27, 28],
   },
   venue: {
     name: "Crystal Plaza",

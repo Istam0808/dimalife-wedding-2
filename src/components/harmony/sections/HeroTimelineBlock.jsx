@@ -6,7 +6,6 @@ import { useRef } from "react";
 import { invite } from "@/data/invite";
 import { useVinePathMotion } from "@/hooks/useVinePathMotion";
 import CoupleTitle from "../ui/CoupleTitle";
-import ProgramTitle from "../ui/ProgramTitle";
 import Reveal from "../ui/Reveal";
 import ScrollDateMark from "../ui/ScrollDateMark";
 import SplitTitle from "../ui/SplitTitle";
@@ -76,10 +75,6 @@ export default function HeroTimelineBlock() {
         </Reveal>
 
         <Reveal className={styles.signature}>{couple.signature}</Reveal>
-
-        <Reveal className={styles.programTitle}>
-          <ProgramTitle />
-        </Reveal>
 
         <div className={styles.calendar}>
           <Reveal className={styles.calendarMonth}>{date.monthLabel}</Reveal>

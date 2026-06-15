@@ -10,10 +10,10 @@ export default function WishesSection() {
     <section className={styles.wishes} aria-label="Пожелания">
       <div className={styles.artboard}>
         <Image
-          src="/harmony/wishes-deco.svg"
+          src="/harmony/shd.png"
           alt=""
-          width={80}
-          height={80}
+          width={1536}
+          height={1024}
           className={styles.deco}
           aria-hidden
         />

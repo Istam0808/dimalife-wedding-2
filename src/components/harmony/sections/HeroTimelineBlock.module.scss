@@ -150,7 +150,9 @@
   width: 311px;
 
   p {
-    @include split-letter;
+    font-family: $font-montserrat-black;
+    font-weight: 900;
+    color: $color-primary;
     font-size: 14px;
     line-height: 1.2;
     letter-spacing: -0.8px;
@@ -186,19 +188,6 @@
   }
 }
 
-.programTitle {
-  @extend %abs;
-  top: 1107px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 264px;
-
-  @include desktop {
-    top: 1324px;
-    width: 419px;
-  }
-}
-
 .calendar {
   @extend %abs;
   top: 1230px;
@@ -230,7 +219,7 @@
 .calendarWeekdays,
 .calendarDays {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
 }
 

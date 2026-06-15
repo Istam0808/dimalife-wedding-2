@@ -16,17 +16,24 @@
 
 .letter {
   @include split-letter;
-  font-size: clamp(48px, 12vw, 72px);
+  font-family: $font-bickham;
+  font-weight: 400;
+  font-size: clamp(72px, 18vw, 108px);
+  line-height: 0.85;
 }
 
 .rest {
   @include script-text;
+  font-family: $font-playfair;
+  font-weight: 500;
   font-size: clamp(40px, 10vw, 64px);
   margin-left: -4px;
 }
 
 .subtitle {
   @include script-text;
+  font-family: $font-playfair;
+  font-weight: 500;
   font-size: clamp(28px, 7vw, 42px);
   margin-top: 8px;
 }
@@ -37,26 +44,36 @@
 
 .tildaRow {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 0;
+  white-space: nowrap;
 }
 
 .tildaLetter {
   @include split-letter;
-  font-size: clamp(50px, 12.5vw, 72px);
-  line-height: 1;
+  font-family: $font-bickham;
+  font-weight: 400;
+  font-size: clamp(64px, 16vw, 92px);
+  line-height: 0.85;
+  flex-shrink: 0;
 }
 
 .tildaRest {
   @include script-text;
-  font-size: clamp(50px, 12.5vw, 64px);
+  font-family: $font-playfair;
+  font-weight: 500;
+  font-size: clamp(40px, 10.5vw, 52px);
   line-height: 0.95;
-  margin-left: -2px;
+  margin-left: -4px;
+  white-space: nowrap;
 }
 
-.tildaSub {
+.tildaLine {
   @include script-text;
-  font-size: clamp(50px, 12.5vw, 64px);
+  font-family: $font-playfair;
+  font-weight: 500;
+  font-size: clamp(40px, 10.5vw, 52px);
   line-height: 0.9;
-  margin-top: 4px;
+  margin: 2px 0 0;
+  white-space: nowrap;
 }
