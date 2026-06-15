@@ -15,7 +15,7 @@ export default function VenueSection() {
 
         <Reveal delay={200} variant="zoomin" className={styles.mapWrap}>
           <Image
-            src="/harmony/venue-map.svg"
+            src="/harmony/XXXL.webp"
             alt={`Карта — ${invite.venue.name}`}
             width={800}
             height={500}

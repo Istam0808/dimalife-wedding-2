@@ -26,28 +26,7 @@ export const invite = {
     mapUrl: "https://yandex.uz/maps/-/CPxQME~5",
     mapButton: "Посмотреть на карте",
   },
-  timeline: [
-    {
-      time: "17:00",
-      title: "ФУРШЕТ",
-      description: "Встречаемся и ожидаем начала свадебной церемонии",
-    },
-    {
-      time: "19:00",
-      title: "ЦЕРЕМОНИЯ",
-      description: "Самый трепетный момент этого дня",
-    },
-    {
-      time: "20:00",
-      title: "БАНКЕТ",
-      description: "Танцы, веселье и чудесная атмосфера!",
-    },
-    {
-      time: "23:00",
-      title: "ЗАВЕРШЕНИЕ ВЕЧЕРА",
-      description: "Будем благодарны вам за счастливые моменты этого дня",
-    },
-  ],
+  timeline: [],
   wishes: {
     gifts: {
       title: "ВКЛАД В МЕЧТУ",

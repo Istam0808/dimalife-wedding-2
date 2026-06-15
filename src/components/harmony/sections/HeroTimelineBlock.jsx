@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { useRef } from "react";
 import { invite } from "@/data/invite";
-import { butterflyPathMobile, timelineLayout } from "@/data/timelineLayout";
+import { useVinePathMotion } from "@/hooks/useVinePathMotion";
 import CoupleTitle from "../ui/CoupleTitle";
 import ProgramTitle from "../ui/ProgramTitle";
 import Reveal from "../ui/Reveal";
@@ -12,57 +12,41 @@ import ScrollDateMark from "../ui/ScrollDateMark";
 import SplitTitle from "../ui/SplitTitle";
 import styles from "./HeroTimelineBlock.module.scss";
 
-function useButterflyMotion(scrollYProgress) {
-  const steps = butterflyPathMobile.length - 1;
-  const inputs = useMemo(
-    () => Array.from({ length: steps + 1 }, (_, i) => i / steps),
-    [steps],
-  );
-  const xs = useMemo(() => butterflyPathMobile.map((p) => p.x), []);
-  const ys = useMemo(() => butterflyPathMobile.map((p) => p.y), []);
-
-  const x = useTransform(scrollYProgress, inputs, xs);
-  const y = useTransform(scrollYProgress, inputs, ys);
-
-  return { x, y };
-}
-
 export default function HeroTimelineBlock() {
   const boardRef = useRef(null);
   const photoRef = useRef(null);
-
-  const { scrollYProgress: boardProgress } = useScroll({
-    target: boardRef,
-    offset: ["start end", "end start"],
-  });
+  const vineTrackRef = useRef(null);
 
   const { scrollYProgress: photoProgress } = useScroll({
     target: photoRef,
     offset: ["start center", "end start"],
   });
 
-  const photoScale = useTransform(photoProgress, [0, 0.45, 1], [1, 1.5, 1.35]);
-  const { x: butterflyX, y: butterflyY } = useButterflyMotion(boardProgress);
+  const { scrollYProgress: vineProgress } = useScroll({
+    target: vineTrackRef,
+    offset: ["start 0.9", "end 0.1"],
+  });
 
-  const { date, couple, hero, timeline } = invite;
+  const photoScale = useTransform(photoProgress, [0, 0.45, 1], [1, 1.5, 1.35]);
+  const { x: butterflyX, y: butterflyY, rotate: butterflyRotate } = useVinePathMotion(vineProgress);
+
+  const { date, couple, hero } = invite;
 
   return (
     <section className={styles.block} aria-label="Приглашение и программа дня">
       <div className={styles.frame} aria-hidden />
       <div className={styles.artboard} ref={boardRef}>
-        <Reveal className={styles.inviteLabel}>{hero.inviteLabel}</Reveal>
-
-        <Reveal className={styles.coupleTitle}>
+        <Reveal className={styles.heroHead}>
           <CoupleTitle />
         </Reveal>
 
         <div className={styles.photoZone} ref={photoRef}>
           <motion.div className={styles.photoWrap} style={{ scale: photoScale }}>
             <Image
-              src="/harmony/hero-photo.jpg"
+              src="/harmony/1.jpg"
               alt={`${couple.full}`}
-              width={1044}
-              height={752}
+              width={1920}
+              height={1280}
               className={styles.photo}
               priority
             />
@@ -117,39 +101,24 @@ export default function HeroTimelineBlock() {
           </Reveal>
         </div>
 
-        <Image
-          src="/harmony/timeline-vine.svg"
-          alt=""
-          width={195}
-          height={684}
-          className={styles.vine}
-          aria-hidden
-        />
+        <div className={styles.vineTrack} ref={vineTrackRef}>
+          <Image
+            src="/harmony/timeline-vine.svg"
+            alt=""
+            width={195}
+            height={684}
+            className={styles.vine}
+            aria-hidden
+          />
 
-        <motion.div
-          className={styles.scrollButterfly}
-          style={{ x: butterflyX, y: butterflyY }}
-          aria-hidden
-        >
-          <ScrollDateMark value={date.highlightDay} />
-        </motion.div>
-
-        {timeline.map((event, index) => {
-          const layout = timelineLayout[index];
-          return (
-            <Reveal
-              key={event.time}
-              variant="zoomin"
-              delay={index * 60}
-              className={`${styles.event} ${styles[`event_${layout.align}`]}`}
-              data-index={index}
-            >
-              <span className={styles.eventTime}>{event.time}</span>
-              <span className={styles.eventTitle}>{event.title}</span>
-              <p className={styles.eventDesc}>{event.description}</p>
-            </Reveal>
-          );
-        })}
+          <motion.div
+            className={styles.scrollButterfly}
+            style={{ x: butterflyX, y: butterflyY, rotate: butterflyRotate }}
+            aria-hidden
+          >
+            <ScrollDateMark value={date.highlightDay} />
+          </motion.div>
+        </div>
 
         <Reveal className={styles.heart}>
           <Image src="/harmony/heart.svg" alt="" width={80} height={72} aria-hidden />

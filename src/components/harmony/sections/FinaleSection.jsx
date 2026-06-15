@@ -10,10 +10,10 @@ export default function FinaleSection() {
 
         <Reveal delay={150} variant="zoomin" className={styles.photoWrap}>
           <Image
-            src="/harmony/finale-photo.jpg"
+            src="/harmony/2.jpg"
             alt="Дильмурод и Шакира"
-            width={900}
-            height={700}
+            width={1200}
+            height={1600}
             className={styles.photo}
           />
         </Reveal>

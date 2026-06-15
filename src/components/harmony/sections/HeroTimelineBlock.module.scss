@@ -41,45 +41,28 @@
   z-index: 2;
 }
 
-.inviteLabel {
+.heroHead {
   @extend %abs;
   top: 34px;
-  left: 50%;
-  transform: translateX(-50%);
-  @include split-letter;
-  font-size: 14px;
-  letter-spacing: -0.8px;
-  text-align: center;
-  white-space: nowrap;
+  left: 0;
+  right: 0;
+  z-index: 2;
 
   @include desktop {
     top: 50px;
-    font-size: 21px;
-  }
-}
-
-.coupleTitle {
-  @extend %abs;
-  top: 72px;
-  left: 0;
-  right: 0;
-  text-align: center;
-
-  @include desktop {
-    top: 100px;
   }
 }
 
 .photoZone {
   @extend %abs;
-  top: 245px;
+  top: 252px;
   left: 50%;
   transform: translateX(-50%);
   width: 262px;
   z-index: 3;
 
   @include desktop {
-    top: 288px;
+    top: 300px;
     width: 323px;
   }
 }
@@ -93,6 +76,8 @@
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  object-position: center 35%;
 }
 
 .weddingLabel {
@@ -294,12 +279,13 @@
   min-height: 28px;
 }
 
-.vine {
+.vineTrack {
   @extend %abs;
   top: 1201px;
   left: 119px;
   width: 195px;
-  height: auto;
+  aspect-ratio: 195 / 684;
+  z-index: 3;
   pointer-events: none;
 
   @include desktop {
@@ -309,118 +295,22 @@
   }
 }
 
+.vine {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
 .scrollButterfly {
-  @extend %abs;
-  top: 1276px;
-  left: 174px;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 53px;
+  height: 48px;
   z-index: 4;
-  pointer-events: none;
-
-  @include desktop {
-    top: 1240px;
-    left: 714px;
-  }
-}
-
-.event {
-  @extend %abs;
-  width: 134px;
-}
-
-.eventTime {
-  display: block;
-  @include script-text;
-  font-size: 36px;
-  letter-spacing: -2px;
-  line-height: 1;
-  transform: rotate(1deg);
-  margin-bottom: 6px;
-
-  @include desktop {
-    font-size: 50px;
-  }
-}
-
-.eventTitle {
-  display: block;
-  @include script-text;
-  font-size: 17px;
-  letter-spacing: -0.8px;
-  line-height: 1.2;
-  margin-bottom: 8px;
-
-  @include desktop {
-    font-size: 24px;
-  }
-}
-
-.eventDesc {
-  @include split-letter;
-  font-size: 13px;
-  line-height: 1.2;
-  letter-spacing: -0.8px;
-
-  @include desktop {
-    font-size: 21px;
-  }
-}
-
-.event_left {
-  text-align: left;
-}
-
-.event_right {
-  text-align: left;
-}
-
-.event_center {
-  text-align: left;
-}
-
-.event[data-index="0"] {
-  top: 1286px;
-  left: 55px;
-
-  @include desktop {
-    top: 1608px;
-    left: 253px;
-  }
-}
-
-.event[data-index="1"] {
-  top: 1414px;
-  left: 250px;
-  width: 96px;
-
-  @include desktop {
-    top: 1796px;
-    left: 680px;
-    width: 138px;
-  }
-}
-
-.event[data-index="2"] {
-  top: 1613px;
-  left: 51px;
-
-  @include desktop {
-    top: 2066px;
-    left: 253px;
-    width: 244px;
-  }
-}
-
-.event[data-index="3"] {
-  top: 1814px;
-  left: 145px;
-  width: 134px;
-
-  @include desktop {
-    top: 2411px;
-    left: 490px;
-    width: 227px;
-  }
+  transform-origin: 26.5px 24px;
 }
 
 .heart {

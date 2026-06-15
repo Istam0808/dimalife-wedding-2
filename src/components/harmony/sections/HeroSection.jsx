@@ -43,7 +43,7 @@ export default function HeroSection() {
         <div className={styles.photoBlock} ref={photoRef}>
           <motion.div className={styles.photoInner} style={{ scale, y }}>
             <Image
-              src="/harmony/hero-photo.jpg"
+              src="/harmony/1.jpg"
               alt="Дильмурод и Шакира"
               width={900}
               height={1100}

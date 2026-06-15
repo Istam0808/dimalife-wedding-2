@@ -1,17 +1,17 @@
-import { Marck_Script, Caveat } from "next/font/google";
+import { Cormorant_Garamond, Raleway } from "next/font/google";
 import "./globals.scss";
 
-const marckScript = Marck_Script({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin", "cyrillic"],
-  weight: ["400"],
-  variable: "--font-marck-script",
+  weight: ["400", "500", "600"],
+  variable: "--font-cormorant",
   display: "swap",
 });
 
-const caveat = Caveat({
+const raleway = Raleway({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-caveat",
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-raleway",
   display: "swap",
 });
 
@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ru" className={`${marckScript.variable} ${caveat.variable}`}>
+    <html lang="ru" className={`${cormorant.variable} ${raleway.variable}`}>
       <body>{children}</body>
     </html>
   );
