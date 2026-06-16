@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, Fragment } from "react";
+import { useRef, Fragment, useState, useLayoutEffect } from "react";
 import { invite } from "@/data/invite";
 import { useVinePathMotion } from "@/hooks/useVinePathMotion";
 import CoupleTitle from "../ui/CoupleTitle";
@@ -23,33 +23,59 @@ export default function HeroTimelineBlock() {
 
   const { scrollYProgress: vineProgress } = useScroll({
     target: vineTrackRef,
-    offset: ["start start", "end end"],
+    offset: ["start 0.9", "end 0.15"],
   });
 
-  const photoScale = useTransform(photoProgress, [0, 0.45, 1], [1, 1.5, 1.35]);
+  const [baseWidth, setBaseWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    const updateViewport = () => {
+      setViewportWidth(document.documentElement.clientWidth);
+    };
+
+    updateViewport();
+
+    if (photoRef.current) {
+      setBaseWidth(photoRef.current.offsetWidth);
+    }
+
+    window.addEventListener("resize", updateViewport);
+    return () => window.removeEventListener("resize", updateViewport);
+  }, []);
+
+  const photoWidth = useTransform(photoProgress, (progress) => {
+    const peak = 0.5;
+    const minW = baseWidth || 262;
+    const maxW = viewportWidth || minW;
+
+    if (progress <= 0) return minW;
+    if (progress >= peak) return maxW;
+
+    return minW + (maxW - minW) * (progress / peak);
+  });
+
   const { x: butterflyX, y: butterflyY, rotate: butterflyRotate } = useVinePathMotion(vineProgress);
 
-  const { date, couple, hero } = invite;
+  const { date, couple, hero, timeline } = invite;
 
   return (
     <section className={styles.block} aria-label="Приглашение и программа дня">
+      <motion.div className={styles.photoZone} ref={photoRef} style={{ width: photoWidth }}>
+        <Image
+          src="/harmony/1.jpg"
+          alt={`${couple.full}`}
+          width={1920}
+          height={1280}
+          className={styles.photo}
+          priority
+        />
+      </motion.div>
+
       <div className={styles.artboard} ref={boardRef}>
         <Reveal className={styles.heroHead}>
           <CoupleTitle />
         </Reveal>
-
-        <div className={styles.photoZone} ref={photoRef}>
-          <motion.div className={styles.photoWrap} style={{ scale: photoScale }}>
-            <Image
-              src="/harmony/1.jpg"
-              alt={`${couple.full}`}
-              width={1920}
-              height={1280}
-              className={styles.photo}
-              priority
-            />
-          </motion.div>
-        </div>
 
         <Reveal className={styles.weddingLabel}>{hero.weddingLabel}</Reveal>
 
@@ -128,6 +154,23 @@ export default function HeroTimelineBlock() {
             <ScrollDateMark value={date.highlightDay} />
           </motion.div>
         </div>
+
+        <ul className={styles.timelineEvents}>
+          {timeline.map((event, index) => (
+            <Reveal
+              key={event.time}
+              as="li"
+              variant="soft"
+              duration={3800}
+              delay={index * 280}
+              className={`${styles.timelineEvent} ${styles[event.side]}`}
+            >
+              <span className={styles.eventTime}>{event.time}</span>
+              <h3 className={styles.eventTitle}>{event.title}</h3>
+              <p className={styles.eventText}>{event.description}</p>
+            </Reveal>
+          ))}
+        </ul>
 
         <Reveal className={styles.heart}>
           <Image src="/harmony/heart.svg" alt="" width={80} height={72} aria-hidden />

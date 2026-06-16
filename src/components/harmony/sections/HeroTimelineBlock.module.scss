@@ -1,17 +1,27 @@
 @use "../../../styles/variables" as *;
 @use "../../../styles/mixins" as *;
 
+$photo-top-mobile: 252px;
+$photo-top-desktop: 300px;
+$label-below-photo-gap-mobile: 28px;
+$label-below-photo-gap-desktop: 32px;
+$label-top-mobile: calc(#{$photo-top-mobile} + 100vw * 1280 / 1920 + #{$label-below-photo-gap-mobile});
+$label-top-desktop: calc(#{$photo-top-desktop} + 100vw * 1280 / 1920 + #{$label-below-photo-gap-desktop});
+$content-shift-mobile: calc(#{$label-top-mobile} - 461px);
+$content-shift-desktop: calc(#{$label-top-desktop} - 546px);
+
 .block {
   position: relative;
   padding: 0 0 24px;
-  overflow-x: clip;
+  overflow-x: visible;
   max-width: 100%;
 }
 
 .artboard {
   position: relative;
+  z-index: 2;
   width: min(400px, 100%);
-  min-height: 2035px;
+  min-height: calc(2035px + #{$content-shift-mobile});
   margin: 0 auto;
   padding: 0 40px;
   overflow-x: clip;
@@ -22,7 +32,7 @@
 
   @include desktop {
     width: $artboard-width;
-    min-height: 2690px;
+    min-height: calc(2690px + #{$content-shift-desktop});
     padding: 0;
   }
 }
@@ -58,11 +68,6 @@
   }
 }
 
-.photoWrap {
-  width: 100%;
-  transform-origin: center top;
-}
-
 .photo {
   width: 100%;
   height: auto;
@@ -73,22 +78,23 @@
 
 .weddingLabel {
   @extend %abs;
-  top: 461px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: calc(#{$label-top-mobile} - 16px);
+  left: 0;
+  right: 0;
+  width: 100%;
   @include split-letter;
-  font-size: 15px;
+  font-size: 18px;
   text-align: center;
 
   @include desktop {
-    top: 546px;
-    font-size: 21px;
+    top: calc(#{$label-top-desktop} - 20px);
+    font-size: 24px;
   }
 }
 
 .dateLine {
   @extend %abs;
-  top: 532px;
+  top: calc(532px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%) rotate(90deg);
   width: 60px;
@@ -96,14 +102,14 @@
   background: $color-primary;
 
   @include desktop {
-    top: 645px;
+    top: calc(645px + #{$content-shift-desktop});
     width: 100px;
   }
 }
 
 .dateValue {
   @extend %abs;
-  top: 585px;
+  top: calc(585px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%);
   @include script-text;
@@ -112,14 +118,14 @@
   text-align: center;
 
   @include desktop {
-    top: 718px;
+    top: calc(718px + #{$content-shift-desktop});
     font-size: 47px;
   }
 }
 
 .dateUnderline {
   @extend %abs;
-  top: 679px;
+  top: calc(679px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%);
   width: min(392px, 100%);
@@ -133,14 +139,14 @@
   }
 
   @include desktop {
-    top: 812px;
+    top: calc(812px + #{$content-shift-desktop});
     width: 399px;
   }
 }
 
 .greeting {
   @extend %abs;
-  top: 769px;
+  top: calc(769px + #{$content-shift-mobile});
   left: 55px;
   width: min(220px, calc(100% - 28px));
 
@@ -151,7 +157,7 @@
   }
 
   @include desktop {
-    top: 841px;
+    top: calc(841px + #{$content-shift-desktop});
     left: 280px;
     width: 280px;
   }
@@ -159,7 +165,7 @@
 
 .intro {
   @extend %abs;
-  top: 929px;
+  top: calc(929px + #{$content-shift-mobile});
   left: 54px;
   width: min(311px, calc(100% - 28px));
 
@@ -180,7 +186,7 @@
   }
 
   @include desktop {
-    top: 1062px;
+    top: calc(1062px + #{$content-shift-desktop});
     left: 279px;
     width: 468px;
 
@@ -194,7 +200,7 @@
 
 .signature {
   @extend %abs;
-  top: 1057px;
+  top: calc(1057px + #{$content-shift-mobile});
   right: 45px;
   width: min(199px, calc(100% - 28px));
   @include script-text;
@@ -209,7 +215,7 @@
   }
 
   @include desktop {
-    top: 1242px;
+    top: calc(1242px + #{$content-shift-desktop});
     right: 38px;
     width: 382px;
     font-size: 29px;
@@ -218,7 +224,7 @@
 
 .calendar {
   @extend %abs;
-  top: 1126px;
+  top: calc(1126px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%);
   width: min(320px, 100%);
@@ -226,7 +232,7 @@
   z-index: 2;
 
   @include desktop {
-    top: 1377px;
+    top: calc(1377px + #{$content-shift-desktop});
     left: 664px;
     transform: none;
     width: 185px;
@@ -281,7 +287,7 @@
 
 .vineTrack {
   @extend %abs;
-  top: 1210px;
+  top: calc(1210px + #{$content-shift-mobile});
   left: 100px;
   width: 195px;
   aspect-ratio: 195 / 684;
@@ -289,7 +295,7 @@
   pointer-events: none;
 
   @include desktop {
-    top: 1475px;
+    top: calc(1475px + #{$content-shift-desktop});
     left: 443px;
     width: 279px;
   }
@@ -313,9 +319,123 @@
   transform-origin: 26.5px 24px;
 }
 
+.timelineEvents {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timelineEvent {
+  @extend %abs;
+  z-index: 6;
+  width: 132px;
+
+  &.left {
+    left: 24px;
+    text-align: left;
+  }
+
+  &.right {
+    right: 24px;
+    text-align: right;
+  }
+
+  &:nth-child(1) {
+    top: calc(1265px + #{$content-shift-mobile});
+  }
+
+  &:nth-child(2) {
+    top: calc(1435px + #{$content-shift-mobile});
+  }
+
+  &:nth-child(3) {
+    top: calc(1605px + #{$content-shift-mobile});
+  }
+
+  &:nth-child(4) {
+    top: calc(1775px + #{$content-shift-mobile});
+  }
+
+  @include mobile {
+    width: 118px;
+
+    &.left {
+      left: 16px;
+    }
+
+    &.right {
+      right: 16px;
+    }
+  }
+
+  @include desktop {
+    width: 300px;
+
+    &.left {
+      left: 100px;
+    }
+
+    &.right {
+      right: 100px;
+    }
+
+    &:nth-child(1) {
+      top: calc(1535px + #{$content-shift-desktop});
+    }
+
+    &:nth-child(2) {
+      top: calc(1705px + #{$content-shift-desktop});
+    }
+
+    &:nth-child(3) {
+      top: calc(1875px + #{$content-shift-desktop});
+    }
+
+    &:nth-child(4) {
+      top: calc(2045px + #{$content-shift-desktop});
+    }
+  }
+}
+
+.eventTime {
+  display: block;
+  @include script-text;
+  font-size: 22px;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 6px;
+
+  @include desktop {
+    font-size: 28px;
+  }
+}
+
+.eventTitle {
+  @include split-letter;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  margin: 0 0 8px;
+
+  @include desktop {
+    font-size: 14px;
+  }
+}
+
+.eventText {
+  @include script-text;
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 0;
+
+  @include desktop {
+    font-size: 18px;
+    line-height: 1.4;
+  }
+}
+
 .heart {
   @extend %abs;
-  top: 1960px;
+  top: calc(1960px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%);
   width: 80px;
@@ -327,7 +447,7 @@
   }
 
   @include desktop {
-    top: 2580px;
+    top: calc(2580px + #{$content-shift-desktop});
   }
 }
 

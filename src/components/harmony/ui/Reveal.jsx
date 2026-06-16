@@ -7,6 +7,7 @@ export default function Reveal({
   children,
   variant = "fadein",
   delay = 0,
+  duration,
   className = "",
   as: Tag = "div",
 }) {
@@ -16,7 +17,10 @@ export default function Reveal({
     <Tag
       ref={ref}
       className={`${styles.reveal} ${styles[variant]} ${inView ? styles.visible : ""} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{
+        transitionDelay: `${delay}ms`,
+        ...(duration != null ? { transitionDuration: `${duration}ms` } : {}),
+      }}
     >
       {children}
     </Tag>
