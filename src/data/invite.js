@@ -19,7 +19,7 @@ export const invite = {
   date: {
     display: "26/06/26",
     full: "26 июня 2026",
-    ceremonyTime: "19:00",
+    ceremonyTime: "20:00",
     monthLabel: "ИЮНЬ 2026",
     highlightDay: 26,
     weekdayLabels: ["СР", "ЧТ", "ПТ", "СБ", "ВС"],
@@ -33,19 +33,19 @@ export const invite = {
   },
   timeline: [
     {
-      time: "15:00",
+      time: "19:00",
       title: "ФУРШЕТ",
       description: "Встречаемся и ожидаем начала свадебной церемонии",
       side: "left",
     },
     {
-      time: "19:00",
+      time: "20:00",
       title: "НАЧАЛО СВАДЬБЫ",
       description: "Самый трепетный момент этого дня",
       side: "right",
     },
     {
-      time: "20:00",
+      time: "21:00",
       title: "БАНКЕТ",
       description: "Танцы, веселье и чудесная атмосфера!",
       side: "left",

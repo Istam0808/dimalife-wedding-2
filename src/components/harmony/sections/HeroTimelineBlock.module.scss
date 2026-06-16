@@ -86,7 +86,8 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
   text-align: center;
   @include split-letter;
   font-family: $font-montserrat;
-  font-weight: 300;
+  font-weight: 400;
+  opacity: 1;
 
   @include desktop {
     top: calc(#{$label-top-desktop} - 20px);
@@ -357,7 +358,7 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
   }
 
   &:nth-child(4) {
-    top: calc(1775px + #{$content-shift-mobile});
+    top: calc(1735px + #{$content-shift-mobile});
   }
 
   @include mobile {
@@ -396,7 +397,7 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
     }
 
     &:nth-child(4) {
-      top: calc(2045px + #{$content-shift-desktop});
+      top: calc(1995px + #{$content-shift-desktop});
     }
   }
 }
