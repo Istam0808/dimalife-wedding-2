@@ -27,9 +27,19 @@ export const invite = {
   },
   venue: {
     name: "Crystal Plaza",
-    address: "г. Ташкент, Crystal Plaza",
+    address: "г. Самарканд, ул. Кадыри Ахмаджонова, 19",
     mapUrl: "https://yandex.uz/maps/-/CPxQME~5",
     mapButton: "Посмотреть на карте",
+    detailsIntro: [
+      "Наше торжество пройдёт",
+      "в банкетном зале",
+      "«Crystal Plaza» по адресу:",
+    ],
+    addressLines: [
+      "г. Самарканд,",
+      "ул. Кадыри Ахмаджонова,",
+      "19",
+    ],
   },
   timeline: [
     {

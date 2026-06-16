@@ -7,13 +7,15 @@ export default function VenueSection() {
   return (
     <section className={styles.venue} aria-label="Место проведения">
       <div className={styles.artboard}>
-        <Reveal className={styles.title}>Где всё случится</Reveal>
+        <div className={styles.title}>
+          <div className={styles.titleRow}>
+            <span className={styles.titleLetter}>Г</span>
+            <span className={styles.titleRest}>де всё</span>
+          </div>
+          <p className={styles.titleLine}>случится</p>
+        </div>
 
-        <Reveal delay={100} className={styles.name}>
-          {invite.venue.name}
-        </Reveal>
-
-        <Reveal delay={200} variant="zoomin" className={styles.mapWrap}>
+        <Reveal delay={100} variant="zoomin" className={styles.mapWrap}>
           <Image
             src="/harmony/restaurant.png"
             alt={invite.venue.name}
@@ -23,7 +25,23 @@ export default function VenueSection() {
           />
         </Reveal>
 
-        <Reveal delay={300} className={styles.actions}>
+        <div className={styles.details}>
+          {invite.venue.detailsIntro.map((line) => (
+            <p key={line} className={styles.detailsLine}>
+              {line}
+            </p>
+          ))}
+        </div>
+
+        <div className={styles.detailsAddress}>
+          {invite.venue.addressLines.map((line) => (
+            <p key={line} className={styles.detailsLine}>
+              {line}
+            </p>
+          ))}
+        </div>
+
+        <div className={styles.actions}>
           <a
             href={invite.venue.mapUrl}
             target="_blank"
@@ -32,7 +50,7 @@ export default function VenueSection() {
           >
             {invite.venue.mapButton}
           </a>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
