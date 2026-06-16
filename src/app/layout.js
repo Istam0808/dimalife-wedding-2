@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Raleway } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Raleway } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.scss";
 
@@ -19,6 +19,11 @@ const raleway = Raleway({
 const playfairDisplay = localFont({
   src: [
     {
+      path: "../../fonts/PlayfairDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
       path: "../../fonts/PlayfairDisplay-Medium.ttf",
       weight: "500",
       style: "normal",
@@ -34,11 +39,11 @@ const bickhamScript = localFont({
   display: "swap",
 });
 
-const montserratBlack = localFont({
-  src: "../../fonts/Montserrat-Black.ttf",
-  variable: "--font-montserrat-black",
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500"],
+  variable: "--font-montserrat",
   display: "swap",
-  weight: "900",
 });
 
 export const metadata = {
@@ -56,7 +61,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="ru"
-      className={`${cormorant.variable} ${raleway.variable} ${playfairDisplay.variable} ${bickhamScript.variable} ${montserratBlack.variable}`}
+      className={`${cormorant.variable} ${raleway.variable} ${playfairDisplay.variable} ${bickhamScript.variable} ${montserrat.variable}`}
     >
       <body>{children}</body>
     </html>

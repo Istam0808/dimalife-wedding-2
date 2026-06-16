@@ -82,9 +82,11 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
   left: 0;
   right: 0;
   width: 100%;
-  @include split-letter;
   font-size: 18px;
   text-align: center;
+  @include split-letter;
+  font-family: $font-montserrat;
+  font-weight: 300;
 
   @include desktop {
     top: calc(#{$label-top-desktop} - 20px);
@@ -112,10 +114,12 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
   top: calc(585px + #{$content-shift-mobile});
   left: 50%;
   transform: translateX(-50%);
-  @include script-text;
   font-size: 35px;
   letter-spacing: -2px;
   text-align: center;
+  @include script-text;
+  font-family: $font-playfair;
+  font-weight: 400;
 
   @include desktop {
     top: calc(718px + #{$content-shift-desktop});
