@@ -19,6 +19,11 @@ html {
 body {
   font-family: $font-body;
   background-color: $color-bg;
+  background-image: $background-image;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: $color-primary;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;

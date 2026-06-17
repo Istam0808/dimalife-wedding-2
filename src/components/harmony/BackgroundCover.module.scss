@@ -11,8 +11,8 @@
 .texture {
   width: 100%;
   height: 100%;
-  background-image: url("/harmony/bg.png");
+  background-image: $background-image;
   background-size: cover;
   background-position: center;
-  opacity: 0.35;
+  background-repeat: no-repeat;
 }

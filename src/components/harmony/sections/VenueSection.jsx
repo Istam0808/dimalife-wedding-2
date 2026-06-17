@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { invite } from "@/data/invite";
 import Reveal from "../ui/Reveal";
+import SplitTitle from "../ui/SplitTitle";
 import styles from "./VenueSection.module.scss";
 
 export default function VenueSection() {
@@ -8,11 +9,14 @@ export default function VenueSection() {
     <section className={styles.venue} aria-label="Место проведения">
       <div className={styles.artboard}>
         <div className={styles.title}>
-          <div className={styles.titleRow}>
-            <span className={styles.titleLetter}>Г</span>
-            <span className={styles.titleRest}>де всё</span>
-          </div>
-          <p className={styles.titleLine}>случится</p>
+          <SplitTitle
+            variant="tilda"
+            letter="Г"
+            firstRest="де всё"
+            lines={["случится"]}
+            letterClassName={styles.venueLetter}
+            firstLineClassName={styles.venueFirstLine}
+          />
         </div>
 
         <Reveal delay={100} variant="zoomin" className={styles.mapWrap}>

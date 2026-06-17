@@ -8,8 +8,8 @@ const AUDIO_SRC = "/audio/music.mp3";
 
 export default function BackgroundMusic() {
   const audioRef = useRef(null);
+  const userPausedRef = useRef(false);
   const [playing, setPlaying] = useState(false);
-  const [ready, setReady] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,31 +23,37 @@ export default function BackgroundMusic() {
     audio.loop = true;
 
     const syncPlaying = () => setPlaying(!audio.paused);
-    const onCanPlay = () => setReady(true);
 
-    audio.addEventListener("play", syncPlaying);
-    audio.addEventListener("pause", syncPlaying);
-    audio.addEventListener("canplaythrough", onCanPlay);
+    const tryPlay = () => {
+      if (userPausedRef.current) return Promise.resolve();
 
-    const tryPlay = () =>
-      audio
+      return audio
         .play()
         .then(() => setPlaying(true))
         .catch(() => setPlaying(false));
-
-    tryPlay();
-
-    const onInteraction = () => {
-      if (audio.paused) tryPlay();
     };
 
-    document.addEventListener("pointerdown", onInteraction, { once: true });
+    const onInteraction = () => {
+      if (userPausedRef.current || !audio.paused) return;
+      tryPlay();
+    };
+
+    syncPlaying();
+    tryPlay();
+
+    audio.addEventListener("play", syncPlaying);
+    audio.addEventListener("pause", syncPlaying);
+    audio.addEventListener("playing", syncPlaying);
+
+    document.addEventListener("pointerdown", onInteraction);
+    document.addEventListener("keydown", onInteraction);
 
     return () => {
       audio.removeEventListener("play", syncPlaying);
       audio.removeEventListener("pause", syncPlaying);
-      audio.removeEventListener("canplaythrough", onCanPlay);
+      audio.removeEventListener("playing", syncPlaying);
       document.removeEventListener("pointerdown", onInteraction);
+      document.removeEventListener("keydown", onInteraction);
     };
   }, []);
 
@@ -56,40 +62,41 @@ export default function BackgroundMusic() {
     if (!audio) return;
 
     if (audio.paused) {
+      userPausedRef.current = false;
       audio.play().then(() => setPlaying(true)).catch(() => {});
     } else {
+      userPausedRef.current = true;
       audio.pause();
       setPlaying(false);
     }
   };
 
-  const toggleButton =
-    ready && mounted ? (
-      <div className={styles.dock}>
-        <button
-          type="button"
-          className={`${styles.toggleButton} ${playing ? styles.playing : styles.paused}`}
-          onClick={handleToggle}
-          aria-label={playing ? "Пауза" : "Включить музыку"}
-        >
-          {playing ? (
-            <span className={styles.equalizer} aria-hidden>
-              <span className={styles.bar} />
-              <span className={styles.bar} />
-              <span className={styles.bar} />
-              <span className={styles.bar} />
-            </span>
-          ) : (
-            <span className={styles.playIcon} aria-hidden />
-          )}
-        </button>
-      </div>
-    ) : null;
+  const toggleButton = (
+    <div className={styles.dock}>
+      <button
+        type="button"
+        className={`${styles.toggleButton} ${playing ? styles.playing : styles.paused}`}
+        onClick={handleToggle}
+        aria-label={playing ? "Пауза" : "Включить музыку"}
+      >
+        {playing ? (
+          <span className={styles.equalizer} aria-hidden>
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+            <span className={styles.bar} />
+          </span>
+        ) : (
+          <span className={styles.playIcon} aria-hidden />
+        )}
+      </button>
+    </div>
+  );
 
   return (
     <>
       <audio ref={audioRef} src={AUDIO_SRC} preload="auto" />
-      {mounted && toggleButton ? createPortal(toggleButton, document.body) : null}
+      {mounted ? createPortal(toggleButton, document.body) : null}
     </>
   );
 }

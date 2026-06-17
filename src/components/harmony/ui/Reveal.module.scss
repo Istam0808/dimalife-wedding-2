@@ -16,6 +16,14 @@
   transform: translateY(14px);
 }
 
+.slideLeft {
+  transform: translateX(-36px);
+}
+
+.slideRight {
+  transform: translateX(36px);
+}
+
 .zoomin {
   transform: scale(0.92);
 }

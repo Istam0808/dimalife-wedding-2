@@ -17,9 +17,25 @@
 }
 
 .title {
-  @include script-text;
-  font-size: clamp(36px, 9vw, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 32px;
+}
+
+.finaleTitle {
+  --tilda-text-size: clamp(36px, 9vw, 56px);
+  --tilda-letter-size: 1.85em;
+  --tilda-letter-indent: 1.58em;
+  --tilda-letter-shift-y: 0.18em;
+}
+
+.finaleFirstLine {
+  padding-left: var(--tilda-letter-indent);
+}
+
+.finaleSubLine {
+  padding-left: 2.55em;
 }
 
 .photoWrap {

@@ -160,7 +160,7 @@ export default function HeroTimelineBlock() {
             <Reveal
               key={event.time}
               as="li"
-              variant="soft"
+              variant={event.side === "left" ? "slideLeft" : "slideRight"}
               duration={3800}
               delay={index * 280}
               className={`${styles.timelineEvent} ${styles[event.side]}`}

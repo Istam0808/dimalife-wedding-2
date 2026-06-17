@@ -1,15 +1,28 @@
 import styles from "./SplitTitle.module.scss";
 
-export default function SplitTitle({ variant = "default" }) {
+export default function SplitTitle({
+  variant = "default",
+  letter = "Д",
+  firstRest = "орогие",
+  lines = ["родные", "и близкие!"],
+  subtitle = "родные и близкие!",
+  className = "",
+  letterClassName = "",
+  firstLineClassName = "",
+  lineClassName = "",
+}) {
   if (variant === "tilda") {
     return (
-      <div className={styles.tilda}>
-        <p className={styles.tildaFirst}>
-          <span className={styles.tildaLetter}>Д</span>
-          <span className={styles.tildaRest}>орогие</span>
+      <div className={`${styles.tilda} ${className}`.trim()}>
+        <p className={`${styles.tildaFirst} ${firstLineClassName}`.trim()}>
+          <span className={`${styles.tildaLetter} ${letterClassName}`.trim()}>{letter}</span>
+          <span className={styles.tildaRest}>{firstRest}</span>
         </p>
-        <p className={styles.tildaLine}>родные</p>
-        <p className={styles.tildaLine}>и близкие!</p>
+        {lines.map((line) => (
+          <p key={line} className={`${styles.tildaLine} ${lineClassName}`.trim()}>
+            {line}
+          </p>
+        ))}
       </div>
     );
   }
@@ -17,10 +30,10 @@ export default function SplitTitle({ variant = "default" }) {
   return (
     <div className={styles.wrap}>
       <h2 className={styles.title}>
-        <span className={styles.letter}>Д</span>
-        <span className={styles.rest}>орогие</span>
+        <span className={styles.letter}>{letter}</span>
+        <span className={styles.rest}>{firstRest}</span>
       </h2>
-      <p className={styles.subtitle}>родные и близкие!</p>
+      <p className={styles.subtitle}>{subtitle}</p>
     </div>
   );
 }

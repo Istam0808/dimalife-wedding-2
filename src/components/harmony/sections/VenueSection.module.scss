@@ -2,7 +2,7 @@
 @use "../../../styles/mixins" as *;
 
 .venue {
-  padding: 48px 16px 64px;
+  padding: 48px 10px 64px;
   position: relative;
   overflow-x: clip;
   max-width: 100%;
@@ -21,59 +21,34 @@
   margin-bottom: 16px;
 }
 
-.titleRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  white-space: nowrap;
+.venueLetter {
+  transform: translateY(0.12em);
+  margin-right: 0px;
 }
 
-.titleLetter {
-  @include split-letter;
-  font-family: $font-bickham;
-  font-weight: 400;
-  font-size: clamp(64px, 16vw, 92px);
-  line-height: 0.85;
-  flex-shrink: 0;
-  opacity: 1;
-}
-
-.titleRest,
-.titleLine {
-  @include script-text;
-  font-family: $font-playfair;
-  font-weight: 400;
-  font-size: clamp(40px, 10.5vw, 52px);
-  line-height: 0.95;
-  white-space: nowrap;
-  opacity: 1;
-}
-
-.titleRest {
-  margin-left: -4px;
-}
-
-.titleLine {
-  line-height: 0.9;
-  margin: 2px 0 0;
+.venueFirstLine {
+  padding-left: 1.02em;
 }
 
 .details {
-  max-width: 28ch;
+  max-width: 36ch;
+  width: 100%;
   margin: 24px auto 0;
+  padding-inline: 4px;
 }
 
 .detailsAddress {
-  max-width: 28ch;
+  max-width: 36ch;
+  width: 100%;
   margin: 40px auto 32px;
+  padding-inline: 4px;
 }
 
 .detailsLine {
   font-family: $font-montserrat;
-  font-size: clamp(14px, 3.6vw, 18px);
-  font-weight: 300;
-  line-height: 1.55;
+  font-size: clamp(16px, 4.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
   color: $color-primary;
   opacity: 1;
   margin: 0;
