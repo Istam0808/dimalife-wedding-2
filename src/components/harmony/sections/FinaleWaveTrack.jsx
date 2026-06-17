@@ -84,7 +84,7 @@ export default function FinaleWaveTrack() {
             <animateMotion
               ref={motionRef}
               begin="indefinite"
-              dur="15s"
+              dur="20s"
               fill="freeze"
               rotate="auto"
               calcMode="linear"

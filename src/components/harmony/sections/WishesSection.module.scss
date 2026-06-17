@@ -2,7 +2,7 @@
 @use "../../../styles/mixins" as *;
 
 .wishes {
-  padding: 32px 16px 64px;
+  padding: 0 16px 64px;
   position: relative;
   overflow-x: clip;
   max-width: 100%;
@@ -15,9 +15,10 @@
 
 .deco {
   display: block;
-  margin: 0 auto 32px;
-  width: min(280px, 72vw);
+  width: 110vw;
+  max-width: 110vw;
   height: auto;
+  margin-left: calc(50% - 55vw);
 }
 
 .cards {

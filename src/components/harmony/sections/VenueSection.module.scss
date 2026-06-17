@@ -2,7 +2,7 @@
 @use "../../../styles/mixins" as *;
 
 .venue {
-  padding: 48px 10px 64px;
+  padding: 48px 10px 0;
   position: relative;
   overflow-x: clip;
   max-width: 100%;
