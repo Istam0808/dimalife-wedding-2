@@ -4,10 +4,10 @@ export default function SplitTitle({ variant = "default" }) {
   if (variant === "tilda") {
     return (
       <div className={styles.tilda}>
-        <div className={styles.tildaRow}>
+        <p className={styles.tildaFirst}>
           <span className={styles.tildaLetter}>Д</span>
           <span className={styles.tildaRest}>орогие</span>
-        </div>
+        </p>
         <p className={styles.tildaLine}>родные</p>
         <p className={styles.tildaLine}>и близкие!</p>
       </div>

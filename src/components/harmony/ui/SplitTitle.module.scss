@@ -39,41 +39,52 @@
 }
 
 .tilda {
+  --tilda-text-size: clamp(40px, 10.5vw, 52px);
+  --tilda-leading: 1.05;
+  font-size: var(--tilda-text-size);
+  line-height: var(--tilda-leading);
+  width: fit-content;
   text-align: left;
 }
 
-.tildaRow {
-  display: flex;
-  align-items: center;
-  gap: 0;
+.tildaFirst {
+  position: relative;
+  padding-top: 0.04em;
+  padding-left: 1.20em;
+  margin: 0;
+  line-height: var(--tilda-leading);
   white-space: nowrap;
-}
-
-.tildaLetter {
-  @include split-letter;
-  font-family: $font-bickham;
-  font-weight: 400;
-  font-size: clamp(64px, 16vw, 92px);
-  line-height: 0.85;
-  flex-shrink: 0;
-}
-
-.tildaRest {
-  @include script-text;
-  font-family: $font-playfair;
-  font-weight: 500;
-  font-size: clamp(40px, 10.5vw, 52px);
-  line-height: 0.95;
-  margin-left: -4px;
-  white-space: nowrap;
+  transform: translateY(0.1em);
 }
 
 .tildaLine {
   @include script-text;
   font-family: $font-playfair;
-  font-weight: 500;
-  font-size: clamp(40px, 10.5vw, 52px);
-  line-height: 0.9;
-  margin: 2px 0 0;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: var(--tilda-leading);
+  margin: 0;
   white-space: nowrap;
+}
+
+.tildaLetter {
+  @include split-letter;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translateY(0.22em);
+  font-family: $font-bickham;
+  font-weight: 400;
+  font-size: 1.7em;
+  line-height: 1;
+  margin: 0 0.06em 0 0;
+}
+
+.tildaRest {
+  @include script-text;
+  font-family: $font-playfair;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: var(--tilda-leading);
+  vertical-align: baseline;
 }

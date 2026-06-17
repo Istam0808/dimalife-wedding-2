@@ -68,11 +68,6 @@ export default function HarmonyMidBlock() {
           <h3 className={styles.cardTitle}>{wishes.gifts.title}</h3>
           <p className={styles.cardText}>{wishes.gifts.text}</p>
         </Reveal>
-
-        <Reveal delay={120} className={styles.wishCardRight}>
-          <h3 className={styles.cardTitle}>{wishes.flowers.title}</h3>
-          <p className={styles.cardText}>{wishes.flowers.text}</p>
-        </Reveal>
       </div>
     </section>
   );

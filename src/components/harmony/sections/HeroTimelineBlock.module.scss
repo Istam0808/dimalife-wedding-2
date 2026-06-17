@@ -184,8 +184,8 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
     font-family: $font-body;
     font-weight: 300;
     color: $color-primary;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 16px;
+    line-height: 19px;
     letter-spacing: -0.3px;
     margin: 0;
   }
@@ -196,7 +196,7 @@ $content-shift-desktop: calc(#{$label-top-desktop} - 546px);
     width: 468px;
 
     p {
-      font-size: 21px;
+      font-size: 24px;
       line-height: 1.3;
       letter-spacing: -0.8px;
     }

@@ -4,7 +4,7 @@ import Reveal from "../ui/Reveal";
 import styles from "./WishesSection.module.scss";
 
 export default function WishesSection() {
-  const { gifts, flowers } = invite.wishes;
+  const { gifts } = invite.wishes;
 
   return (
     <section className={styles.wishes} aria-label="Пожелания">
@@ -22,11 +22,6 @@ export default function WishesSection() {
           <Reveal className={styles.card}>
             <h3 className={styles.cardTitle}>{gifts.title}</h3>
             <p className={styles.cardText}>{gifts.text}</p>
-          </Reveal>
-
-          <Reveal delay={120} className={styles.card}>
-            <h3 className={styles.cardTitle}>{flowers.title}</h3>
-            <p className={styles.cardText}>{flowers.text}</p>
           </Reveal>
         </div>
 
