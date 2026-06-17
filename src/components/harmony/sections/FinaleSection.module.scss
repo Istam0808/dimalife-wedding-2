@@ -7,6 +7,11 @@
   overflow: hidden;
   overflow-x: clip;
   max-width: 100%;
+
+  @include mobile {
+    overflow: visible;
+    overflow-x: clip;
+  }
 }
 
 .artboard {
@@ -14,6 +19,10 @@
   text-align: center;
   position: relative;
   padding-bottom: 64px;
+
+  @include mobile {
+    overflow: visible;
+  }
 }
 
 .title {
@@ -41,6 +50,11 @@
 .photoWrap {
   margin: 0 auto;
   max-width: 720px;
+
+  @include mobile {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .photo {
@@ -52,11 +66,53 @@
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.12);
 }
 
-.wave {
+.waveTrack {
   width: 100%;
   max-width: $artboard-width;
-  height: auto;
   margin: 32px auto 0;
+
+  @include mobile {
+    position: relative;
+    z-index: 3;
+    width: calc(100% + 32px);
+    max-width: none;
+    margin: -48px -16px 0;
+    overflow: visible;
+  }
+}
+
+.waveSvg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+
+  @include mobile {
+    transform: scale(1.19);
+    transform-origin: left bottom;
+  }
+}
+
+.wavePath {
+  fill: none;
+  stroke: $color-primary;
+  stroke-width: 1;
+
+  @include mobile {
+    stroke-width: 1.5;
+  }
+}
+
+.walkingHeart {
+  pointer-events: none;
+
+  @include desktop {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
 }
 
 .branch {

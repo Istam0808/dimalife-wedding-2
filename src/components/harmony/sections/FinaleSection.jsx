@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Reveal from "../ui/Reveal";
 import SplitTitle from "../ui/SplitTitle";
+import FinaleWaveTrack from "./FinaleWaveTrack";
 import styles from "./FinaleSection.module.scss";
 
 export default function FinaleSection() {
@@ -29,14 +30,7 @@ export default function FinaleSection() {
           />
         </Reveal>
 
-        <Image
-          src="/harmony/finale-wave.svg"
-          alt=""
-          width={1200}
-          height={40}
-          className={styles.wave}
-          aria-hidden
-        />
+        <FinaleWaveTrack />
 
         <Image
           src="/harmony/finale-branch.svg"
