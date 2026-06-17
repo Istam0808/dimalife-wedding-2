@@ -7,6 +7,7 @@ import HeroTimelineBlock from "./sections/HeroTimelineBlock";
 import VenueSection from "./sections/VenueSection";
 import WishesSection from "./sections/WishesSection";
 import FinaleSection from "./sections/FinaleSection";
+import CountdownSection from "./sections/CountdownSection";
 import styles from "./HarmonyInvite.module.scss";
 
 export default function HarmonyInvite() {
@@ -25,6 +26,7 @@ export default function HarmonyInvite() {
       <VenueSection />
       <WishesSection />
       <FinaleSection />
+      <CountdownSection />
     </main>
   );
 }
