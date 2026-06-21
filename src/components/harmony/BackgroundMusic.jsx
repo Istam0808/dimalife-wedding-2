@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import styles from "./BackgroundMusic.module.scss";
 
-const AUDIO_SRC = "/audio/music.mp3";
+const AUDIO_SRC = "/audio/music2.mp3";
 
 export default function BackgroundMusic() {
   const audioRef = useRef(null);
